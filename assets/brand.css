@@ -1,0 +1,18 @@
+:root { --signal: #FFB153; }
+
+.handoff { border-color: var(--signal); }
+
+.handoff::before,
+.handoff::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 50%;
+  height: 35%;
+  border: 1px solid var(--signal);
+}
+
+.handoff::before { top: 12%; left: 0; border-right: 0; }
+.handoff::after { bottom: 12%; right: 0; border-left: 0; }
+.handoff > img { background: var(--ink); }
+.handoff .art-caption { color: var(--signal); }
