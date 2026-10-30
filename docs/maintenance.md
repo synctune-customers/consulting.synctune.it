@@ -10,6 +10,10 @@ JavaScript or generator.
 this branch's approved accent and visual motif. Each branch repository ships
 its own files; no website depends on another website's CSS or assets.
 
+The public name is **Synctune Consulting**, and the site and repository are
+`consulting.synctune.it`. Only the GitHub organization retains the
+`synctune-customers` slug.
+
 ## Project links and confidentiality
 
 The catalog is based on the branch's public GitHub profile and Matteo's public
@@ -24,7 +28,7 @@ Keep archived work and partner projects distinct from current releases and
 company-owned projects.
 
 Customer identities, logos, private repositories and delivery details must not
-be added without authorization. The Customers branch describes services, not
+be added without authorization. The Consulting branch describes services, not
 client projects.
 
 Matteo's personal site is linked at `mbianchi.dev`. Denote, Open Playlist and
@@ -47,6 +51,10 @@ The display face is Bricolage Grotesque, body text uses Work Sans, and metadata
 uses DM Mono. Unmodified fonts are bundled in `assets/fonts/`; their original
 SIL Open Font License notices are in `assets/fonts/licenses/`. Keep those
 notices. No new license or trademark clearance is implied for brand artwork.
+
+The approved Common ground silhouette and amber palette are unchanged.
+Bundled SVG titles and the social card use the corrected Consulting name.
+`assets/social.svg` is the outlined source for `assets/social.png`.
 
 No scripts, CDN resources, analytics, cookies, embedded media, forms or booking
 widgets load on this site. Linked services have their own policies. Update the

@@ -1,7 +1,7 @@
-# Synctune Customers
+# Synctune Consulting
 
 A single-page company branch site for
-[customers.synctune.it](https://customers.synctune.it).
+[consulting.synctune.it](https://consulting.synctune.it).
 Customer work stays confidential. Plain HTML and CSS, with local assets and
 fonts. No JavaScript, dependencies, install command or build step.
 
