@@ -6,6 +6,10 @@ The complete branch site lives in `index.html`. Edit its project entries,
 descriptions, availability labels and links directly. There is no content API,
 JavaScript or generator.
 
+Keep this page focused on this branch's work. Do not name or promote sibling
+branches here; `synctune.it` is the only site with the branch-family overview.
+A simple link back to the company can remain.
+
 `assets/styles.css` contains the shared layout. `assets/brand.css` contains
 this branch's approved accent and visual motif. Each branch repository ships
 its own files; no website depends on another website's CSS or assets.
