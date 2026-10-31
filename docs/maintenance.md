@@ -71,14 +71,17 @@ The logo lists and original assets come from
 [mbianchidev/mbianchi.dev](https://github.com/mbianchidev/mbianchi.dev), revision
 `f6831809021e723bf8c21dceb2aa98c0019fe90d`.
 
-The Customers carousel includes all 32 public entries from
-`src/data/customers.json` where `show` is true, in source order. Logo mappings
-come from `src/data/customerLogos.ts`. KubeLab has no image in that mapping and
-retains the source page's text label. The public list covers work, advising,
-teaching and employment; do not turn it into claims about specific contracts.
+The Customers carousel has 29 curated entries from the public set. The old
+Synctune image, KubeLab and the Various/ITIS entry are omitted, including their
+unused assets. Eco-Mind is represented by the current Sourcesense wordmark.
+Familiar brands appear first; the last seven entries are Omnistrate, Abila,
+Zefi.ai, Tenutabene, GreenChic, Sourcesense and Coopolis, in that order.
+The public list covers work, advising, teaching and employment; do not turn it
+into claims about specific contracts.
 
 The Partners carousel uses the 15 organizations from the homepage's
-`src/components/TrustedBy.tsx`, in source order. The user chose the Partners
+`src/components/TrustedBy.tsx`, in source order, with the OpenAI image replaced
+by the mark used on OpenAI's official website. The user chose the Partners
 heading. Keep the source's non-endorsement context; these logos are not
 corporate endorsements or evidence of a formal company partnership.
 
@@ -87,17 +90,31 @@ Original files are bundled in `assets/customer-logos/` and
 in `assets/logo-notices/SOURCE-LICENSE.txt`; organization marks remain their
 owners' marks, not Synctune artwork.
 
-`assets/carousels.js` adds previous/next buttons, keyboard arrows and Home/End
-navigation. The native scrollable lists remain usable without JavaScript.
-There is no automatic movement; optional smooth scrolling respects reduced
-motion. Keep logo alt text, source provenance and the original file contents
-when updating the sets.
+The Sourcesense wordmark is taken from the official company's website. The
+OpenAI mark is the original `openai.com/favicon.svg`, with its built-in color
+scheme behavior retained; logo tiles explicitly use a light color scheme.
+`assets/logo-notices/provenance.json` records both official source URLs and the
+local checksums. Follow OpenAI's [brand guidelines](https://openai.com/brand/)
+and keep the mark unchanged and subordinate to Synctune's branding.
+
+`assets/carousels.js` scrolls both rows at 36 pixels per second, wrapping over
+decorative cloned items for a continuous loop. Clones are inert and hidden
+from assistive technology. Pause/Play controls provide a persistent choice;
+hover, keyboard focus, offscreen rows and hidden tabs suspend movement.
+Previous/next buttons, keyboard navigation and direct pointer/wheel interaction
+stop automatic scrolling until Play is selected again.
+
+Reduced-motion preferences disable automatic movement and remove the clones.
+Native scrollable lists remain usable without JavaScript. Keep logo alt text,
+source provenance and the original file contents when updating the sets.
 
 ## Before publishing a change
 
 Preview narrow and wide screens. Check local assets, anchors, outbound
 destinations and keyboard focus. Exercise both carousels with buttons, keyboard
-and scrolling, including the endpoints, a resized viewport and JavaScript
-disabled. Open the privacy disclosure with the keyboard.
+and scrolling, including the loop seam, Pause/Play, hover/focus interruption,
+reduced motion, hidden/offscreen behavior, resizing and JavaScript disabled.
+Check that both hero caption labels retain their clearance from the lower
+decorative line. Open the privacy disclosure with the keyboard.
 Keep `CNAME`, canonical URLs, `robots.txt` and `sitemap.xml` consistent if the
 hostname changes. No install or build step is required.

@@ -2,8 +2,8 @@
 
 A single-page company branch site for
 [consulting.synctune.it](https://consulting.synctune.it).
-Customer and partner logo carousels reuse the public lists on mbianchi.dev.
-Plain HTML, CSS and small native JavaScript controls, with local assets and
+Curated customer and partner logo rows scroll automatically with pause controls.
+Plain HTML, CSS and native JavaScript controls, with local assets and
 fonts. No libraries, dependencies, install command or build step.
 
 - [Preview and Pages deployment](docs/deployment.md)
