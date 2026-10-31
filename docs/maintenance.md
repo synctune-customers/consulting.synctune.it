@@ -3,8 +3,8 @@
 ## Edit the page
 
 The complete branch site lives in `index.html`. Edit its project entries,
-descriptions, availability labels and links directly. There is no content API,
-JavaScript or generator.
+descriptions, availability labels and links directly. There is no content API
+or generator. Optional carousel controls use native JavaScript.
 
 Keep this page focused on this branch's work. Do not name or promote sibling
 branches here; `synctune.it` is the only site with the branch-family overview.
@@ -31,9 +31,9 @@ release dates, store listings, testimonials or product screenshots.
 Keep archived work and partner projects distinct from current releases and
 company-owned projects.
 
-Customer identities, logos, private repositories and delivery details must not
-be added without authorization. The Consulting branch describes services, not
-client projects.
+The user authorized reusing the existing public customer and organization logo
+lists from mbianchi.dev. Do not add private customer repositories, case studies
+or delivery details. New logo references still need authorization.
 
 Matteo's personal site is linked at `mbianchi.dev`. Denote, Open Playlist and
 Moguri have independent websites. This repository does not build or deploy them.
@@ -60,13 +60,44 @@ The approved Common ground silhouette and amber palette are unchanged.
 Bundled SVG titles and the social card use the corrected Consulting name.
 `assets/social.svg` is the outlined source for `assets/social.png`.
 
-No scripts, CDN resources, analytics, cookies, embedded media, forms or booking
-widgets load on this site. Linked services have their own policies. Update the
-page's privacy note if this behavior changes.
+No third-party scripts, CDN resources, analytics, cookies, embedded media, forms
+or booking widgets load on this site. Carousel controls run locally without
+storage or network requests. Linked services have their own policies. Update
+the page's privacy note if this behavior changes.
+
+## Customer and partner logos
+
+The logo lists and original assets come from
+[mbianchidev/mbianchi.dev](https://github.com/mbianchidev/mbianchi.dev), revision
+`f6831809021e723bf8c21dceb2aa98c0019fe90d`.
+
+The Customers carousel includes all 32 public entries from
+`src/data/customers.json` where `show` is true, in source order. Logo mappings
+come from `src/data/customerLogos.ts`. KubeLab has no image in that mapping and
+retains the source page's text label. The public list covers work, advising,
+teaching and employment; do not turn it into claims about specific contracts.
+
+The Partners carousel uses the 15 organizations from the homepage's
+`src/components/TrustedBy.tsx`, in source order. The user chose the Partners
+heading. Keep the source's non-endorsement context; these logos are not
+corporate endorsements or evidence of a formal company partnership.
+
+Original files are bundled in `assets/customer-logos/` and
+`assets/organization-logos/`. The source repository's license notice is retained
+in `assets/logo-notices/SOURCE-LICENSE.txt`; organization marks remain their
+owners' marks, not Synctune artwork.
+
+`assets/carousels.js` adds previous/next buttons, keyboard arrows and Home/End
+navigation. The native scrollable lists remain usable without JavaScript.
+There is no automatic movement; optional smooth scrolling respects reduced
+motion. Keep logo alt text, source provenance and the original file contents
+when updating the sets.
 
 ## Before publishing a change
 
 Preview narrow and wide screens. Check local assets, anchors, outbound
-destinations and keyboard focus. Open the privacy disclosure with the keyboard.
+destinations and keyboard focus. Exercise both carousels with buttons, keyboard
+and scrolling, including the endpoints, a resized viewport and JavaScript
+disabled. Open the privacy disclosure with the keyboard.
 Keep `CNAME`, canonical URLs, `robots.txt` and `sitemap.xml` consistent if the
 hostname changes. No install or build step is required.

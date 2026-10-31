@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="stylesheet" href="assets/brand.css">
   <link rel="preload" href="assets/fonts/BricolageGrotesque-Bold.ttf" as="font" type="font/ttf" crossorigin>
+  <script src="assets/carousels.js" defer></script>
   <title>Synctune Consulting | Software for your work</title>
 </head>
 <body>
@@ -44,8 +45,79 @@
       <div class="split"><div><p class="eyebrow">How the conversation starts</p><h2 id="context-title">What needs<br>to change?</h2></div><div class="split-copy"><p>Bring the workflow, the bottleneck or the system that is getting difficult to live with. We can work through the context and decide where engineering effort will help.</p><p>Sometimes that means building something. Sometimes it means simplifying what is already there, or helping your team take over the next step.</p></div></div>
       <ul class="service-list"><li><strong>Understand the context</strong><span>What needs to work, for whom, and within which constraints?</span></li><li><strong>Choose a useful scope</strong><span>A concrete piece of work with a clear handoff, rather than a stack in search of a problem.</span></li></ul>
     </section>
-    <section class="section light" aria-labelledby="privacy-title">
-      <div class="split wrap"><div><p class="eyebrow">Customer work stays confidential</p><h2 id="privacy-title">Your project<br>stays yours.</h2></div><div class="split-copy"><p>Customer names, logos, private repositories and delivery details stay out of this public portfolio.</p></div></div>
+    <section id="customers" class="section light" aria-labelledby="customers-title" aria-roledescription="carousel" data-carousel>
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">Consulting work</p><h2 id="customers-title">Customers</h2></div>
+          <div class="carousel-controls" data-carousel-controls hidden>
+            <button class="carousel-button" type="button" aria-label="Previous customer logos" aria-controls="customer-logos" data-carousel-previous><span aria-hidden="true">&#8592;</span></button>
+            <button class="carousel-button" type="button" aria-label="Next customer logos" aria-controls="customer-logos" data-carousel-next><span aria-hidden="true">&#8594;</span></button>
+          </div>
+        </div>
+        <p class="logo-context">Companies where we've worked, built, advised and taught.</p>
+        <ul id="customer-logos" class="logo-carousel" tabindex="0" aria-label="Customer logos" aria-describedby="customer-help" data-carousel-track>
+          <li><img src="assets/customer-logos/ghb.webp" alt="GitHub (Microsoft)" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/organization-logos/microsoft.svg" alt="Microsoft" width="2500" height="2500" loading="lazy"></li>
+          <li><img src="assets/customer-logos/free.webp" alt="SyncTune" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/mntcrs.webp" alt="MentorCruise" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/omnistrate.svg" alt="Omnistrate" width="284" height="64" loading="lazy"></li>
+          <li><img src="assets/customer-logos/ing.webp" alt="ING" width="564" height="140" loading="lazy"></li>
+          <li><span class="logo-text">KubeLab</span></li>
+          <li><img src="assets/customer-logos/zef.webp" alt="Zefi.ai" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/abl.webp" alt="Abila" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/nki.webp" alt="NKI - Antoni van Leeuwenhoek" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/roar.webp" alt="Roar" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/cpls.webp" alt="Coopolis" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/ext_rdht.webp" alt="Extraordy (RedHat Partner)" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/grnc.webp" alt="GreenChic" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/gdf.webp" alt="Italian Ministry of Economy and Finance" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/mvctch.webp" alt="MVC Technologies" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/dshr.webp" alt="D-Share" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/ice.webp" alt="Infocert" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/gen.webp" alt="Generali" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/gas.webp" alt="Enel" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/all.webp" alt="Allianz" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/leo.webp" alt="Leonardo" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/frx.webp" alt="Frontex" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/bar.webp" alt="Barilla" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/bmw.webp" alt="BMW" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/unc.webp" alt="Unicredit" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/rpl.webp" alt="Reply" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/eco.webp" alt="Eco-Mind (now Sourcesense)" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/rpp.webp" alt="Reply Power" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/vod.webp" alt="Vodafone" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/ten.webp" alt="Tenutabene (formerly CambioMarcia, now Unipol)" width="360" height="160" loading="lazy"></li>
+          <li><img src="assets/customer-logos/var.webp" alt="Various" width="360" height="160" loading="lazy"></li>
+        </ul>
+        <p id="customer-help" class="meta carousel-hint">Scroll or swipe to browse all logos.</p>
+      </div>
+    </section>
+    <section id="partners" class="section wrap" aria-labelledby="partners-title" aria-roledescription="carousel" data-carousel>
+      <div class="section-heading">
+        <div><p class="eyebrow">People we work with</p><h2 id="partners-title">Partners</h2></div>
+        <div class="carousel-controls" data-carousel-controls hidden>
+          <button class="carousel-button" type="button" aria-label="Previous partner logos" aria-controls="partner-logos" data-carousel-previous><span aria-hidden="true">&#8592;</span></button>
+          <button class="carousel-button" type="button" aria-label="Next partner logos" aria-controls="partner-logos" data-carousel-next><span aria-hidden="true">&#8594;</span></button>
+        </div>
+      </div>
+      <ul id="partner-logos" class="logo-carousel" tabindex="0" aria-label="Partner logos" aria-describedby="partner-help" data-carousel-track>
+        <li><img src="assets/organization-logos/github.svg" alt="GitHub" width="24" height="24" loading="lazy"></li>
+        <li><img src="assets/organization-logos/google.svg" alt="Google" width="66" height="66" loading="lazy"></li>
+        <li><img src="assets/organization-logos/microsoft.svg" alt="Microsoft" width="2500" height="2500" loading="lazy"></li>
+        <li><img src="assets/organization-logos/uber.svg" alt="Uber" width="927" height="322" loading="lazy"></li>
+        <li><img src="assets/organization-logos/amazon.svg" alt="Amazon" width="384" height="120" loading="lazy"></li>
+        <li><img src="assets/organization-logos/meta.svg" alt="Meta" width="288" height="191" loading="lazy"></li>
+        <li><img src="assets/organization-logos/apple.svg" alt="Apple" width="271" height="315" loading="lazy"></li>
+        <li><img src="assets/organization-logos/netflix.svg" alt="Netflix" width="263" height="480" loading="lazy"></li>
+        <li><img src="assets/organization-logos/tesla.svg" alt="Tesla" width="1028" height="1024" loading="lazy"></li>
+        <li><img src="assets/organization-logos/nvidia.svg" alt="NVIDIA" width="351" height="259" loading="lazy"></li>
+        <li><img src="assets/organization-logos/adobe.svg" alt="Adobe" width="123" height="136" loading="lazy"></li>
+        <li><img src="assets/organization-logos/edera.svg" alt="Edera" width="183" height="163" loading="lazy"></li>
+        <li><img src="assets/organization-logos/replit.svg" alt="Replit" width="24" height="24" loading="lazy"></li>
+        <li><img src="assets/organization-logos/openai.svg" alt="OpenAI" width="62" height="23" loading="lazy"></li>
+        <li><img src="assets/organization-logos/anthropic.svg" alt="Anthropic" width="24" height="24" loading="lazy"></li>
+      </ul>
+      <p id="partner-help" class="meta carousel-hint">Scroll or swipe to browse all logos. These logos do not imply corporate endorsement.</p>
     </section>
     <section id="contact" class="section wrap" aria-labelledby="contact-title">
       <div class="split"><div><p class="eyebrow">Talk to the person doing the work</p><h2 id="contact-title">Start with<br>Matteo.</h2></div><div class="split-copy"><p>Matteo Bianchi is the founder behind Synctune, with a background across software engineering, platforms and open-source work.</p><p>Visit his personal website for his background and current contact details.</p><div class="actions"><a class="button" href="https://mbianchi.dev">Connect on mbianchi.dev <span class="arrow" aria-hidden="true">&#8599;</span></a></div></div></div>
@@ -53,7 +125,7 @@
   </main>
   <footer class="site-footer wrap">
     <div class="footer-top"><p>Synctune Consulting. Part of Synctune.</p><nav class="footer-links" aria-label="Footer navigation"><a href="https://synctune.it">The company</a><a href="https://github.com/synctune-customers">GitHub</a></nav></div>
-    <div class="footer-bottom"><span>consulting.synctune.it / Custom software &amp; consulting</span><details class="privacy"><summary>No cookies. No tracking.</summary><p>This page has no analytics, cookies, forms or booking widgets. Fonts and artwork are local. Hosting providers may process standard request data; any external service you visit has its own privacy policy.</p></details></div>
+    <div class="footer-bottom"><span>consulting.synctune.it / Custom software &amp; consulting</span><details class="privacy"><summary>No cookies. No tracking.</summary><p>This page has no analytics, cookies, forms or booking widgets. Fonts and artwork are local. The carousel controls run only in your browser and send no data. Hosting providers may process standard request data; any external service you visit has its own privacy policy.</p></details></div>
   </footer>
 </body>
 </html>
