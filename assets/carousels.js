@@ -21,8 +21,8 @@ for (const carousel of document.querySelectorAll("[data-carousel]")) {
     console.error("Logo carousel is empty", carousel.id);
     continue;
   }
-  let clones = [];
-  let loopWidth = 0;
+  let itemStep = 0;
+  let scrollRange = 0;
   let position = track.scrollLeft;
   let requested = true;
   let hovered = false;
@@ -32,50 +32,46 @@ for (const carousel of document.querySelectorAll("[data-carousel]")) {
   let lastTime = null;
 
   function measure() {
-    loopWidth = clones.length
-      ? clones[0].getBoundingClientRect().left - originals[0].getBoundingClientRect().left
+    itemStep = track.children.length > 1
+      ? track.children[1].getBoundingClientRect().left - track.children[0].getBoundingClientRect().left
       : 0;
-    position = loopWidth > 0 ? track.scrollLeft % loopWidth : track.scrollLeft;
+    scrollRange = track.scrollWidth - track.clientWidth;
+    position = track.scrollLeft;
   }
 
-  function createLoop() {
-    if (clones.length) return;
-    const fragment = document.createDocumentFragment();
-    clones = originals.map((original) => {
-      const clone = original.cloneNode(true);
-      clone.setAttribute("data-carousel-clone", "");
-      clone.setAttribute("aria-hidden", "true");
-      clone.setAttribute("inert", "");
-      clone.removeAttribute("id");
-      for (const node of clone.querySelectorAll("[id]")) node.removeAttribute("id");
-      for (const image of clone.querySelectorAll("img")) image.alt = "";
-      fragment.append(clone);
-      return clone;
-    });
-    track.append(fragment);
+  function enableLoop() {
     track.setAttribute("data-looping", "");
     measure();
   }
 
-  function removeLoop() {
-    if (!clones.length) return;
-    const normalized = loopWidth > 0 ? track.scrollLeft % loopWidth : track.scrollLeft;
-    for (const clone of clones) clone.remove();
-    clones = [];
+  function getLogicalPosition() {
+    const firstIndex = originals.indexOf(track.firstElementChild);
+    const cycleWidth = originals.length * itemStep;
+    return cycleWidth > 0
+      ? (firstIndex * itemStep + track.scrollLeft) % cycleWidth
+      : track.scrollLeft;
+  }
+
+  function restoreOrder() {
+    const logicalPosition = getLogicalPosition();
+    if (track.firstElementChild !== originals[0]) {
+      for (const original of originals) track.append(original);
+    }
     track.removeAttribute("data-looping");
-    track.scrollLeft = normalized;
+    track.scrollLeft = logicalPosition;
     measure();
   }
 
   function updateControls() {
     const lastPosition = track.scrollWidth - track.clientWidth;
-    previous.disabled = track.scrollLeft <= 1;
-    next.disabled = track.scrollLeft >= lastPosition - 1;
+    const logicalPosition = Math.min(getLogicalPosition(), lastPosition);
+    previous.disabled = logicalPosition <= 1;
+    next.disabled = logicalPosition >= lastPosition - 1;
   }
 
   function canRun() {
     return requested && !reducedMotion.matches && !printMedia.matches && !document.hidden
-      && inView && !hovered && !focused && loopWidth > track.clientWidth;
+      && inView && !hovered && !focused && itemStep > 0 && scrollRange >= itemStep;
   }
 
   function stopFrame() {
@@ -93,7 +89,11 @@ for (const carousel of document.querySelectorAll("[data-carousel]")) {
     }
     if (lastTime !== null) {
       const seconds = Math.min(time - lastTime, 100) / 1000;
-      position = (position + pixelsPerSecond * seconds) % loopWidth;
+      position += pixelsPerSecond * seconds;
+      while (position >= itemStep) {
+        track.append(track.firstElementChild);
+        position -= itemStep;
+      }
       track.scrollLeft = position;
     }
     lastTime = time;
@@ -101,14 +101,14 @@ for (const carousel of document.querySelectorAll("[data-carousel]")) {
   }
 
   function syncPlayback() {
-    if (reducedMotion.matches) removeLoop();
-    else if (requested) createLoop();
+    if (reducedMotion.matches || printMedia.matches) restoreOrder();
+    else if (requested) enableLoop();
     toggle.hidden = reducedMotion.matches;
     toggle.textContent = requested ? "Pause" : "Play";
     toggle.setAttribute("aria-label", `${requested ? "Pause" : "Play"} ${track.getAttribute("aria-label").toLowerCase()} scrolling`);
     if (canRun()) {
       if (frame === null) {
-        position = track.scrollLeft % loopWidth;
+        position = track.scrollLeft;
         lastTime = null;
         track.setAttribute("data-auto-scrolling", "");
         frame = window.requestAnimationFrame(advance);
@@ -126,11 +126,21 @@ for (const carousel of document.querySelectorAll("[data-carousel]")) {
 
   function scrollLogosTo(left) {
     stopAutomatic();
+    restoreOrder();
     track.scrollTo({ left, behavior: reducedMotion.matches ? "auto" : "smooth" });
   }
 
-  previous.addEventListener("click", () => scrollLogosTo(track.scrollLeft - track.clientWidth));
-  next.addEventListener("click", () => scrollLogosTo(track.scrollLeft + track.clientWidth));
+  function scrollLogosBy(direction) {
+    stopAutomatic();
+    restoreOrder();
+    track.scrollTo({
+      left: track.scrollLeft + direction * track.clientWidth,
+      behavior: reducedMotion.matches ? "auto" : "smooth",
+    });
+  }
+
+  previous.addEventListener("click", () => scrollLogosBy(-1));
+  next.addEventListener("click", () => scrollLogosBy(1));
   track.addEventListener("scroll", updateControls, { passive: true });
   window.addEventListener("resize", () => {
     measure();
@@ -169,10 +179,10 @@ for (const carousel of document.querySelectorAll("[data-carousel]")) {
     if (event.target !== track || event.ctrlKey || event.metaKey || event.altKey) return;
     switch (event.key) {
       case "ArrowLeft":
-        scrollLogosTo(track.scrollLeft - track.clientWidth);
+        scrollLogosBy(-1);
         break;
       case "ArrowRight":
-        scrollLogosTo(track.scrollLeft + track.clientWidth);
+        scrollLogosBy(1);
         break;
       case "Home":
         scrollLogosTo(0);
@@ -187,5 +197,6 @@ for (const carousel of document.querySelectorAll("[data-carousel]")) {
   });
 
   controls.hidden = false;
+  measure();
   syncPlayback();
 }

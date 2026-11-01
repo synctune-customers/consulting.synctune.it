@@ -71,6 +71,7 @@
   padding: 8px 0 20px;
   margin: 0;
   overflow-x: auto;
+  overflow-anchor: none;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   list-style: none;
@@ -112,15 +113,8 @@
 
 @media print {
   .carousel-controls,
-  .carousel-hint,
-  .logo-carousel [data-carousel-clone] {
+  .carousel-hint {
     display: none;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .logo-carousel [data-carousel-clone] {
-      display: none;
-    }
   }
 
   .logo-carousel {

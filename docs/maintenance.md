@@ -97,14 +97,16 @@ scheme behavior retained; logo tiles explicitly use a light color scheme.
 local checksums. Follow OpenAI's [brand guidelines](https://openai.com/brand/)
 and keep the mark unchanged and subordinate to Synctune's branding.
 
-`assets/carousels.js` scrolls both rows at 36 pixels per second, wrapping over
-decorative cloned items for a continuous loop. Clones are inert and hidden
-from assistive technology. Pause/Play controls provide a persistent choice;
+`assets/carousels.js` scrolls both rows at 36 pixels per second. Each logo has
+one list item: once the leading item has fully scrolled out, it moves to the
+end and the scroll offset is compensated. Do not append cloned or duplicated
+customer/partner sets. Pause/Play controls provide a persistent choice;
 hover, keyboard focus, offscreen rows and hidden tabs suspend movement.
 Previous/next buttons, keyboard navigation and direct pointer/wheel interaction
 stop automatic scrolling until Play is selected again.
 
-Reduced-motion preferences disable automatic movement and remove the clones.
+Manual button/keyboard navigation, printing and reduced-motion preferences
+restore the original list order. Reduced motion disables automatic movement.
 Native scrollable lists remain usable without JavaScript. Keep logo alt text,
 source provenance and the original file contents when updating the sets.
 
@@ -112,8 +114,9 @@ source provenance and the original file contents when updating the sets.
 
 Preview narrow and wide screens. Check local assets, anchors, outbound
 destinations and keyboard focus. Exercise both carousels with buttons, keyboard
-and scrolling, including the loop seam, Pause/Play, hover/focus interruption,
-reduced motion, hidden/offscreen behavior, resizing and JavaScript disabled.
+and scrolling, including unique item counts through a full cycle, the loop
+seam, Pause/Play, hover/focus interruption, reduced motion, hidden/offscreen
+behavior, resizing and JavaScript disabled.
 Check that both hero caption labels retain their clearance from the lower
 decorative line. Open the privacy disclosure with the keyboard.
 Keep `CNAME`, canonical URLs, `robots.txt` and `sitemap.xml` consistent if the
