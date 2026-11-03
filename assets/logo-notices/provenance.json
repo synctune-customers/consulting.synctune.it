@@ -1,0 +1,14 @@
+[
+  {
+    "organization": "Sourcesense",
+    "asset": "assets/customer-logos/sourcesense.svg",
+    "source": "https://www.sourcesense.com/static-assets/images/logo-sourcesense-colors.svg",
+    "sha256": "51248cee0d7e8f25c3ab61cc3e93aedeb83f8377422eb338340d479b5c0eda42"
+  },
+  {
+    "organization": "OpenAI",
+    "asset": "assets/organization-logos/openai.svg",
+    "source": "https://openai.com/favicon.svg",
+    "sha256": "ed615b8fd9703863918daae6106396a42926fd167abc1bcad4aca860ff0f7ba6"
+  }
+]
