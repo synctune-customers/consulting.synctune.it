@@ -157,7 +157,7 @@ p + p { margin-top: 1rem; }
   font-size: 0.9rem;
 }
 
-.site-nav a { text-decoration: none; }
+.site-nav a { gap: 8px; text-decoration: none; }
 .site-nav a:hover { color: var(--signal); text-decoration: underline; }
 
 .eyebrow,

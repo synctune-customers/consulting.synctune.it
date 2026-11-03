@@ -6,12 +6,8 @@ const pixelsPerSecond = 36;
 
 for (const carousel of document.querySelectorAll("[data-carousel]")) {
   const track = carousel.querySelector("[data-carousel-track]");
-  const controls = carousel.querySelector("[data-carousel-controls]");
-  const previous = carousel.querySelector("[data-carousel-previous]");
-  const next = carousel.querySelector("[data-carousel-next]");
-  const toggle = carousel.querySelector("[data-carousel-toggle]");
 
-  if (!track || !controls || !previous || !next || !toggle) {
+  if (!track) {
     console.error("Logo carousel markup is incomplete", carousel.id);
     continue;
   }
@@ -27,7 +23,7 @@ for (const carousel of document.querySelectorAll("[data-carousel]")) {
   let requested = true;
   let hovered = false;
   let focused = false;
-  let inView = true;
+  let inView = !("IntersectionObserver" in window);
   let frame = null;
   let lastTime = null;
 
@@ -60,13 +56,6 @@ for (const carousel of document.querySelectorAll("[data-carousel]")) {
     track.removeAttribute("data-looping");
     track.scrollLeft = logicalPosition;
     measure();
-  }
-
-  function updateControls() {
-    const lastPosition = track.scrollWidth - track.clientWidth;
-    const logicalPosition = Math.min(getLogicalPosition(), lastPosition);
-    previous.disabled = logicalPosition <= 1;
-    next.disabled = logicalPosition >= lastPosition - 1;
   }
 
   function canRun() {
@@ -103,9 +92,6 @@ for (const carousel of document.querySelectorAll("[data-carousel]")) {
   function syncPlayback() {
     if (reducedMotion.matches || printMedia.matches) restoreOrder();
     else if (requested) enableLoop();
-    toggle.hidden = reducedMotion.matches;
-    toggle.textContent = requested ? "Pause" : "Play";
-    toggle.setAttribute("aria-label", `${requested ? "Pause" : "Play"} ${track.getAttribute("aria-label").toLowerCase()} scrolling`);
     if (canRun()) {
       if (frame === null) {
         position = track.scrollLeft;
@@ -116,7 +102,6 @@ for (const carousel of document.querySelectorAll("[data-carousel]")) {
     } else {
       stopFrame();
     }
-    updateControls();
   }
 
   function stopAutomatic() {
@@ -139,9 +124,6 @@ for (const carousel of document.querySelectorAll("[data-carousel]")) {
     });
   }
 
-  previous.addEventListener("click", () => scrollLogosBy(-1));
-  next.addEventListener("click", () => scrollLogosBy(1));
-  track.addEventListener("scroll", updateControls, { passive: true });
   window.addEventListener("resize", () => {
     measure();
     syncPlayback();
@@ -150,11 +132,6 @@ for (const carousel of document.querySelectorAll("[data-carousel]")) {
   reducedMotion.addEventListener("change", syncPlayback);
   printMedia.addEventListener("change", () => {
     if (!printMedia.matches) measure();
-    syncPlayback();
-  });
-  toggle.addEventListener("click", () => {
-    requested = !requested;
-    if (requested) focused = false;
     syncPlayback();
   });
   carousel.addEventListener("mouseenter", () => { hovered = true; syncPlayback(); });
@@ -178,6 +155,13 @@ for (const carousel of document.querySelectorAll("[data-carousel]")) {
   track.addEventListener("keydown", (event) => {
     if (event.target !== track || event.ctrlKey || event.metaKey || event.altKey) return;
     switch (event.key) {
+      case " ":
+        if (!event.repeat) {
+          requested = !requested;
+          if (requested) focused = false;
+          syncPlayback();
+        }
+        break;
       case "ArrowLeft":
         scrollLogosBy(-1);
         break;
@@ -196,7 +180,6 @@ for (const carousel of document.querySelectorAll("[data-carousel]")) {
     event.preventDefault();
   });
 
-  controls.hidden = false;
   measure();
   syncPlayback();
 }

@@ -2,8 +2,8 @@
 
 A single-page company branch site for
 [consulting.synctune.it](https://consulting.synctune.it).
-Curated customer and partner logo rows scroll automatically with pause controls.
-Plain HTML, CSS and native JavaScript controls, with local assets and
+Curated customer and partner logo rows scroll automatically without buttons.
+Plain HTML, CSS and native JavaScript, with local assets and
 fonts. No libraries, dependencies, install command or build step.
 
 - [Preview and Pages deployment](docs/deployment.md)
