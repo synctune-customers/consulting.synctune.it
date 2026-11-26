@@ -68,7 +68,8 @@ standard `GITHUB_TOKEN` and GitHub's OIDC token.
 
 The workflow does not run Jekyll. `CNAME`, `robots.txt` and `sitemap.xml` already
 describe the intended hostname. Asset and internal-page links are relative,
-so the content also works under a Pages repository path. Canonical and
+so the content also works under a Pages repository path. The home link is
+`./`, not `index.html`, so it lands on the clean root URL. Canonical and
 social-preview URLs intentionally use the final custom domain.
 
 Deploy each site independently. Links to other Synctune subdomains will work
